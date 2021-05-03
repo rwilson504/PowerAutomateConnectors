@@ -1975,48 +1975,7 @@
           }
         }
       }
-    },
-    "/v2/orders/batch-retrieve": {
-      "post": {
-        "tags": [
-          "Orders"
-        ],
-        "summary": "BatchRetrieveOrders",
-        "operationId": "BatchRetrieveOrders",
-        "description": "Retrieves a set of [Order](https://developer.squareup.com/reference/square_2021-04-21/objects/Order)s by their IDs.\n\nIf a given Order ID does not exist, the ID is ignored instead of generating an error.",
-        "x-release-status": "PUBLIC",
-        "x-oauthpermissions": [
-          "ORDERS_READ"
-        ],
-        "x-sq-version": "2021-04-21",
-        "security": [
-          {
-            "oauth2": [
-              "ORDERS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
-            }
-          }
-        }
-      }
-    },
+    },    
     "/v2/orders/calculate": {
       "post": {
         "tags": [
@@ -8816,99 +8775,6 @@
             "location_id": "59TNP9SA8VGDA",
             "quantity": "79",
             "calculated_at": "2016-11-16T22:28:01.223Z"
-          }
-        ]
-      }
-    },
-    "BatchRetrieveOrdersRequest": {
-      "type": "object",
-      "required": [
-        "order_ids"
-      ],
-      "properties": {
-        "location_id": {
-          "type": "string",
-          "description": "The ID of the location for these orders. This field is optional: omit it to retrieve\norders within the scope of the current authorization\u0027s merchant ID."
-        },
-        "order_ids": {
-          "type": "array",
-          "items": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "description": "The IDs of the orders to retrieve. A maximum of 100 orders can be retrieved per request."
-        }
-      },
-      "description": "Defines the fields that are included in requests to the\nBatchRetrieveOrders endpoint.",
-      "x-release-status": "PUBLIC",
-      "example": {
-        "request_body": {
-          "location_id": "057P5VYJ4A5X1",
-          "order_ids": [
-            "CAISEM82RcpmcFBM0TfOyiHV3es",
-            "CAISENgvlJ6jLWAzERDzjyHVybY"
-          ]
-        }
-      }
-    },
-    "BatchRetrieveOrdersResponse": {
-      "type": "object",
-      "properties": {
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Order"
-          },
-          "description": "The requested orders. This will omit any requested orders that do not exist."
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Error"
-          },
-          "description": "Any errors that occurred during the request."
-        }
-      },
-      "description": "Defines the fields that are included in the response body of\na request to the BatchRetrieveOrders endpoint.",
-      "x-release-status": "PUBLIC",
-      "example": {
-        "orders": [
-          {
-            "id": "CAISEM82RcpmcFBM0TfOyiHV3es",
-            "location_id": "057P5VYJ4A5X1",
-            "reference_id": "my-order-001",
-            "line_items": [
-              {
-                "uid": "945986d1-9586-11e6-ad5a-28cfe92138cf",
-                "name": "Awesome product",
-                "quantity": "1",
-                "base_price_money": {
-                  "amount": 1599,
-                  "currency": "USD"
-                },
-                "total_money": {
-                  "amount": 1599,
-                  "currency": "USD"
-                }
-              },
-              {
-                "uid": "a8f4168c-9586-11e6-bdf0-28cfe92138cf",
-                "name": "Another awesome product",
-                "quantity": "3",
-                "base_price_money": {
-                  "amount": 2000,
-                  "currency": "USD"
-                },
-                "total_money": {
-                  "amount": 6000,
-                  "currency": "USD"
-                }
-              }
-            ],
-            "total_money": {
-              "amount": 7599,
-              "currency": "USD"
-            }
           }
         ]
       }
