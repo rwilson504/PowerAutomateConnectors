@@ -69,44 +69,7 @@
       "name": "Authorization"
     }
   },
-  "paths": {    
-    "/v2/apple-pay/domains": {
-      "post": {
-        "tags": [
-          "ApplePay"
-        ],
-        "summary": "RegisterDomain",
-        "operationId": "RegisterDomain",
-        "description": "Activates a domain for use with Apple Pay on the Web and Square. A validation\nis performed on this domain by Apple to ensure that it is properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nApple Pay on the Web with Square for merchants using their platform.\n\nTo learn more about Web Apple Pay, see\n[Add the Apple Pay on the Web Button](https://developer.squareup.com/docs/payment-form/add-digital-wallets/apple-pay).",
-        "x-release-status": "PUBLIC",
-        "x-oauthpermissions": [],
-        "x-sq-version": "2021-04-21",
-        "security": [
-          {
-            "oauth2": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/RegisterDomainRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/RegisterDomainResponse"
-            }
-          }
-        }
-      }
-    },
+  "paths": {       
     "/v2/bank-accounts": {
       "get": {
         "tags": [
@@ -28517,65 +28480,7 @@
           "updated_at": "2018-10-17T20:41:55.520Z"
         }
       }
-    },
-    "RegisterDomainRequest": {
-      "type": "object",
-      "required": [
-        "domain_name"
-      ],
-      "properties": {
-        "domain_name": {
-          "minLength": 1,
-          "maxLength": 255,
-          "type": "string",
-          "description": "A domain name as described in RFC-1034 that will be registered with ApplePay."
-        }
-      },
-      "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](https://developer.squareup.com/reference/square_2021-04-21/apple-pay-api/register-domain) endpoint.",
-      "x-release-status": "PUBLIC",
-      "example": {
-        "request_body": {
-          "domain_name": "example.com"
-        }
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.python",
-        "csharp": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.csharp",
-        "java": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.java",
-        "php": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.php",
-        "javascript": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.javascript",
-        "ruby": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.ruby"
-      }
-    },
-    "RegisterDomainResponse": {
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Error"
-          },
-          "description": "Any errors that occurred during the request."
-        },
-        "status": {
-          "type": "string",
-          "description": "The status of the domain registration.\n\nSee [RegisterDomainResponseStatus](https://developer.squareup.com/reference/square_2021-04-21/enums/RegisterDomainResponseStatus) for possible values."
-        }
-      },
-      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](https://developer.squareup.com/reference/square_2021-04-21/apple-pay-api/register-domain) endpoint.\n\nEither `errors` or `status` are present in a given response (never both).",
-      "x-release-status": "PUBLIC",
-      "example": {
-        "status": "VERIFIED"
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.python",
-        "csharp": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.csharp",
-        "java": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.java",
-        "php": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.php",
-        "javascript": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.javascript",
-        "ruby": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainResponse.ruby"
-      }
-    },
+    },    
     "RemoveDisputeEvidenceRequest": {
       "type": "object",
       "properties": {},
