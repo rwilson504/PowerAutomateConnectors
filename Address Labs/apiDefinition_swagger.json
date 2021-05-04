@@ -55,7 +55,8 @@
           "responses": {
             "200": {
               "description": "Definition generated from Swagger Inspector",
-              "schema": {                
+              "schema": {
+                "type": "object",          
                 "properties": {
                     "number": {
                       "type": "string"
