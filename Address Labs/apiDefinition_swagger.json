@@ -1,0 +1,117 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Address Labs",
+      "description": "A free API which parses an address within the United States into it's individual components.",
+      "contact": {
+        "name": "Richard Wilson",
+        "url": "https://powerappsraw.com"       
+      }
+    },
+    "x-ms-connector-metadata": [
+      {
+        "propertyName": "Website",
+        "propertyValue": "https://powerappsraw.com"
+      }
+    ],
+    "host": "api.addresslabs.com",
+    "basePath": "/v1",
+    "schemes": [
+      "http"
+    ],
+    "consumes": [],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/parsed-address": {
+        "post": {
+          "summary": "Parse Address",
+          "description": "Returns the parsed address information from a single address string.",
+          "operationId": "Parsed-Address",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "string",
+                    "description": "address"                    
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Definition generated from Swagger Inspector",
+              "schema": {                
+                "properties": {
+                    "number": {
+                      "type": "string"
+                    },
+                    "street": {
+                      "type": "string"
+                    },
+                    "street_suffix": {
+                      "type": "string"
+                    },
+                    "street_post_direction": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "state_fips": {
+                      "type": "string"
+                    },
+                    "zip": {
+                      "type": "string"
+                    },
+                    "intersection": {
+                      "type": "boolean"
+                    },
+                    "delivery": {
+                        "type" : "object",                        
+                        "properties": {
+                            "address_line": {
+                              "type": "string"
+                            },
+                            "last_line": {
+                              "type": "string"
+                            }
+                          }                        
+                    },
+                    "input": {
+                    "type": "string"
+                    }
+                }
+              }
+            },
+            "406" : {
+              "description": "Address could not be parsed"
+            }        
+          }
+        }
+      }
+    },
+    "definitions": {},
+    "parameters": {},
+    "responses": {},
+    "securityDefinitions": {},
+    "security": [],
+    "tags": []
+  }
