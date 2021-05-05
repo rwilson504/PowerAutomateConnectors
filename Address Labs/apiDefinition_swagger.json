@@ -6,13 +6,13 @@
       "description": "A free API which parses an address within the United States into it's individual components.",
       "contact": {
         "name": "Richard Wilson",
-        "url": "https://powerappsraw.com"       
+        "url": "http://powerappsraw.com"       
       }
     },
     "x-ms-connector-metadata": [
       {
         "propertyName": "Website",
-        "propertyValue": "https://powerappsraw.com"
+        "propertyValue": "http://powerappsraw.com"
       }
     ],
     "host": "api.addresslabs.com",
@@ -20,7 +20,9 @@
     "schemes": [
       "http"
     ],
-    "consumes": [],
+    "consumes": [
+      "application/json"
+    ],
     "produces": [
       "application/json"
     ],
@@ -60,7 +62,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Definition generated from Swagger Inspector",
+              "description": "The response containing the parsed address attributes.",
               "schema": {
                 "type": "object",          
                 "properties": {
@@ -150,7 +152,25 @@
                       "description": "Input address string"
                     }
                 }
-              }
+              },
+              "examples": {
+                "application/json": {                
+                    "number": "5404",
+                    "street": "Wisconsin",
+                    "street_suffix": "Ave",
+                    "unit": "700",
+                    "city": "Chevy Chase",
+                    "state": "MD",
+                    "state_fips": "24",
+                    "zip": "20815",
+                    "intersection": false,
+                    "delivery": {
+                      "address_line": "5404 Wisconsin Ave # 700",
+                      "last_line": "Chevy Chase MD  20815"
+                    },
+                    "input": "5404 Wisconsin Ave #700 Chevy Chase MD 20815"                
+                }
+            }
             },
             "406" : {
               "description": "Address could not be parsed"
