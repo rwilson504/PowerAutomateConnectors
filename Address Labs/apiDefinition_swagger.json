@@ -46,7 +46,7 @@
                 "properties": {
                   "address": {
                     "type": "string",
-                    "description": "address",
+                    "description": "The address you would like to parse, eg. '5404 Wisconsin Ave #700 Chevy Chase MD 20815'",
                     "x-ms-visibility": "important",
                     "x-ms-summary": "Address"              
                   }
@@ -87,7 +87,7 @@
                     },
                     "street_post_direction": {
                       "type": "string",
-                      "description": "Directional designator appearing after street name, eg. 'NW' in '1600 Pennsylvania Ave NW'"
+                      "description": "Directional designator appearing after street name, eg. 'NW' in '901 K St NW'"
                     },
                     "street2": {
                       "type": "string",
