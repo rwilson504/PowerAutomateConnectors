@@ -51,7 +51,10 @@
                     "x-ms-summary": "Address"              
                   }
                 },
-                "required": ["address"]
+                "required": ["address"],
+                "example": {
+                  "address" : "5404 Wisconsin Ave #700 Chevy Chase MD 20815"
+                }
               }
             }
           ],
