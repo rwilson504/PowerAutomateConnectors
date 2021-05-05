@@ -48,9 +48,10 @@
                     "type": "string",
                     "description": "address",
                     "x-ms-visibility": "important",
-                    "x-ms-summary": "Address"
+                    "x-ms-summary": "Address"              
                   }
-                }
+                },
+                "required": ["address"]
               }
             }
           ],
