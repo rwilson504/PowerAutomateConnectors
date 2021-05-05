@@ -150,6 +150,18 @@
             },
             "406" : {
               "description": "Address could not be parsed"
+            },
+            "500" : {
+              "description": "The API is down"
+            },
+            "502" : {
+              "description": "Bad gateway"
+            },
+            "503" : {
+              "description": "Service unavailable"
+            },
+            "504" : {
+              "description": "Gateway timeout"
             }        
           }
         }
