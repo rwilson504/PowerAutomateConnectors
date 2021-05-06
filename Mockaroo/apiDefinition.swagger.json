@@ -40,15 +40,12 @@
                 },
                 "count": {
                   "type": "integer",
-                  "x-ms-summary": "Number of Records to Return",
+                  "x-ms-summary": "Record Count",
                   "format": "int32",
                   "description": "Return a specific number of records.  If not specified the number currently set in the schema will be used.",
                   "x-ms-visibility": "important"
                 }
-              },
-              "default": {
-                "array": "true"
-              },
+              },              
               "required": [
                 "schema"
               ]
@@ -141,14 +138,13 @@
     "array": {
       "in": "query",
       "name": "array",
-      "type": "string",
-      "default": "true",
-      "x-ms-visibility": "internal"
+      "type": "boolean",
+      "default": true
     }
   },
   "responses": {},
   "securityDefinitions": {
-    "API-Key": {
+    "API Key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-API-Key"
@@ -156,7 +152,7 @@
   },
   "security": [
     {
-      "API-Key": []
+      "API Key": []
     }
   ],
   "tags": []
