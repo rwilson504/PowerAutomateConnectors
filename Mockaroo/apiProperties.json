@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "connectionParameters": {
+      "api_key": {
+        "type": "securestring",
+        "uiDefinition": {
+          "displayName": "Mockaroo API Key",
+          "description": "Your Mockaroo API Key which can be found in the My Account area at www.mockaroo.com",
+          "tooltip": "Provide your Mockaroo API Key",
+          "constraints": {
+            "tabIndex": 2,
+            "clearText": false,
+            "required": "true"
+          }
+        }
+      }
+    },
+    "iconBrandColor": "#007ee5",
+    "capabilities": [],
+    "publisher": "Richard Wilson"
+  }
+}
