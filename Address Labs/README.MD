@@ -4,7 +4,6 @@
 ## Address Labs - Microsoft Power Automate Connector
 Microsoft Power Automate Connector for [https://addresslabs.com/](https://addresslabs.com/) a free parsing service for addresses within the United State.
 
-
 ## Triggers
 
 * none

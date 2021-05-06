@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Mockaroo",
-    "description": "# Introduction\nUtilize the Mockaroo API https://www.mockaroo.com/ to return sample data from your existing schemas or create a schema on the fly and get sample data back from your application.\n# Authentication\nAn API Key can be provided in the body or in as a request parameter.\n\n# Error Codes\nWhat errors and status codes can a user expect?"
+    "description": "Utilize the Mockaroo API https://www.mockaroo.com/ to return sample data you can utilize to test your application."
   },
   "host": "api.mockaroo.com",
   "basePath": "/",
@@ -19,9 +19,9 @@
   "paths": {
     "/api/generate.json": {
       "post": {
-        "summary": "Generate from Existing Schema",
+        "summary": "Generate Data",
         "description": "Allows you to return generated data from an existing schema you have created in Mockaroo.",
-        "operationId": "GenerateFromExisting",
+        "operationId": "GenerateData",
         "parameters": [
           {
             "$ref": "#/parameters/array"
@@ -68,7 +68,7 @@
     },
     "/api/types": {
       "get": {
-        "summary": "Types",
+        "summary": "Get Schema Types",
         "description": "Returns the types and properties available for building Mockaroo schemas.",
         "operationId": "Types",
         "responses": {
