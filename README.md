@@ -2,5 +2,7 @@
 
 Contains the definitions for custom Power Automate connectors.
 
-* [Address Labs](https://addresslabs.com/)
-* [Mockaroo](https://www.mockaroo.com/)
+- [Address Labs](https://addresslabs.com/)
+    - [OpenAPI Link](Address%20Labs/apiDefinition.swagger.json?raw=1)
+- [Mockaroo](https://www.mockaroo.com/)
+    - [OpenAPI Link](Mockarro/apiDefinition.swagger.json?raw=1)
