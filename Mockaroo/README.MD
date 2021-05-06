@@ -10,4 +10,4 @@ Microsoft Power Automate Connector for [https://www.mockaroo.com/](https://www.m
 
 ## Actions
 
-* Generate from Existing Schema: Allows you to return data from a schema you have created on the Mockaroo website.
+* Generate Data: Allows you to return data from a schema you have created on the Mockaroo website.
