@@ -45,7 +45,7 @@
                   "description": "Return a specific number of records.  If not specified the number currently set in the schema will be used.",
                   "x-ms-visibility": "important"
                 }
-              },              
+              },
               "required": [
                 "schema"
               ]
@@ -148,8 +148,8 @@
   "securityDefinitions": {
     "API Key": {
       "type": "apiKey",
-      "in": "query",
-      "name": "key"
+      "in": "header",
+      "name": "X-API-Key"
     }
   },
   "security": [
