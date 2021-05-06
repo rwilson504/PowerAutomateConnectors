@@ -139,7 +139,9 @@
       "in": "query",
       "name": "array",
       "type": "boolean",
-      "default": true
+      "default": true,
+      "x-ms-visibility": "internal",
+      "required": true
     }
   },
   "responses": {},
