@@ -148,8 +148,8 @@
   "securityDefinitions": {
     "API Key": {
       "type": "apiKey",
-      "in": "header",
-      "name": "X-API-Key"
+      "in": "query",
+      "name": "key"
     }
   },
   "security": [
