@@ -70,7 +70,7 @@
       "get": {
         "summary": "Get Schema Types",
         "description": "Returns the types and properties available for building Mockaroo schemas.",
-        "operationId": "Types",
+        "operationId": "GetTypes",
         "responses": {
           "200": {
             "description": "200",
