@@ -1,0 +1,178 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Voice Monkey",
+    "description": "Voice Monkey provides you with an API to trigger Alexa Routines remotely.",
+    "version": "1.0"
+  },
+  "host": "api.voicemonkey.io",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/trigger": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "description": "status"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "message"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Trigger a voice monkey",
+        "description": "Trigger a voice monkey routine to run an Alexa routine remotely.",
+        "operationId": "triggerMonkey",
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-ms-visibility": "important",
+            "format": "password",
+            "description": "Sign in to your account or open your welcome email to find your Voice Monkey access token.",
+            "x-ms-summary": "Access Token"
+          },
+          {
+            "name": "monkey",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-ms-visibility": "important",
+            "x-ms-summary": "Monkey to trigger",
+            "description": "This is the ID of the Monkey you want to trigger."
+          },
+          {
+            "name": "announcement",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "If you want your Alexa device to speak something out loud when you trigger your monkey then add the text to this parameter. You must open the Voice Monkey Skill as the last step of your routine.",
+            "x-ms-summary": "Announcement text"
+          },
+          {
+            "name": "voice",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "x-ms-summary": "Voice",
+            "description": "Leave empty to use default Alexa voice or select from one of the many different voices for your announcement.",
+            "enum": [
+              "Naja",
+              "Mads",
+              "Lotte",
+              "Ruben",
+              "Nicole",
+              "Russell",
+              "Amy",
+              "Emma",
+              "Brian",
+              "Raveena",
+              "Aditi",
+              "Ivy",
+              "Joanna",
+              "Kendra",
+              "Kimberly",
+              "Salli",
+              "Joey",
+              "Justin",
+              "Matthew",
+              "Geraint",
+              "Celine",
+              "Lea",
+              "Mathieu",
+              "Chantal",
+              "Marlene",
+              "Vicki",
+              "Hans",
+              "D\u00f3ra",
+              "Karl",
+              "Carla",
+              "Giorgio",
+              "Takumi",
+              "Mizuki",
+              "Seoyeon",
+              "Liv",
+              "Ewa",
+              "Maja",
+              "Jacek",
+              "Jan",
+              "Vitoria",
+              "Ricardo",
+              "Ines",
+              "Cristiano",
+              "Carmen",
+              "Tatyana",
+              "Maxim",
+              "Conchita",
+              "Enrique",
+              "Pen\u00e9lope",
+              "Miguel",
+              "Astrid",
+              "Filiz",
+              "Gwyneth"
+            ]
+          },
+          {
+            "name": "notification",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "x-ms-summary": "Send Notification",
+            "description": "You can optionally send a notification to Alexa. The \u2018announcement\u2019 parameter must not be blank."
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "x-ms-summary": "Image URL",
+            "description": "You can send an image to alexa devices with a screen including the Echo Show. The \u2018announcement\u2019 parameter must not be blank. You must open the Voice Monkey Skill as the last step of your routine."
+          },
+          {
+            "name": "video",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "x-ms-summary": "Video URL",
+            "description": "You can send a video to alexa devices with a screen including the Echo Show. The \u2018announcement\u2019 parameter must not be blank. You must open the Voice Monkey Skill as the last step of your routine."
+          },
+          {
+            "name": "websiteUrl",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "x-ms-summary": "Website URL",
+            "description": "Open a website on your screen enabled Alexa. The \u2018announcement\u2019 parameter must not be blank. You must open the Voice Monkey Skill as the last step of your routine."
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "secret_token"
+    }
+  },
+  "security": [],
+  "tags": []
+}
