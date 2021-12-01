@@ -1,0 +1,989 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Exchange Online Contacts",
+    "description": "",
+    "version": "1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/beta/users/{userid}/contactFolders": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.context": {
+                  "type": "string",
+                  "description": "@odata.context"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "id"
+                      },
+                      "parentFolderId": {
+                        "type": "string",
+                        "description": "parentFolderId"
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "displayName"
+                      },
+                      "wellKnownName": {
+                        "type": "string",
+                        "description": "wellKnownName"
+                      }
+                    }
+                  },
+                  "description": "value"
+                }
+              }
+            }
+          }
+        },
+        "summary": "GetContactFolders",
+        "operationId": "GetContactFolders",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/beta/users/{userid}/contactFolders/{folderid}/contacts": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.context": {
+                  "type": "string",
+                  "description": "@odata.context"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@odata.etag": {
+                        "type": "string",
+                        "description": "@odata.etag"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "id"
+                      },
+                      "createdDateTime": {
+                        "type": "string",
+                        "description": "createdDateTime"
+                      },
+                      "lastModifiedDateTime": {
+                        "type": "string",
+                        "description": "lastModifiedDateTime"
+                      },
+                      "changeKey": {
+                        "type": "string",
+                        "description": "changeKey"
+                      },
+                      "categories": {
+                        "type": "array",
+                        "items": {},
+                        "description": "categories"
+                      },
+                      "parentFolderId": {
+                        "type": "string",
+                        "description": "parentFolderId"
+                      },
+                      "birthday": {
+                        "type": "string",
+                        "description": "birthday"
+                      },
+                      "fileAs": {
+                        "type": "string",
+                        "description": "fileAs"
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "displayName"
+                      },
+                      "givenName": {
+                        "type": "string",
+                        "description": "givenName"
+                      },
+                      "initials": {
+                        "type": "string",
+                        "description": "initials"
+                      },
+                      "middleName": {
+                        "type": "string",
+                        "description": "middleName"
+                      },
+                      "nickName": {
+                        "type": "string",
+                        "description": "nickName"
+                      },
+                      "surname": {
+                        "type": "string",
+                        "description": "surname"
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "title"
+                      },
+                      "yomiGivenName": {
+                        "type": "string",
+                        "description": "yomiGivenName"
+                      },
+                      "yomiSurname": {
+                        "type": "string",
+                        "description": "yomiSurname"
+                      },
+                      "yomiCompanyName": {
+                        "type": "string",
+                        "description": "yomiCompanyName"
+                      },
+                      "generation": {
+                        "type": "string",
+                        "description": "generation"
+                      },
+                      "imAddresses": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "imAddresses"
+                      },
+                      "jobTitle": {
+                        "type": "string",
+                        "description": "jobTitle"
+                      },
+                      "companyName": {
+                        "type": "string",
+                        "description": "companyName"
+                      },
+                      "department": {
+                        "type": "string",
+                        "description": "department"
+                      },
+                      "officeLocation": {
+                        "type": "string",
+                        "description": "officeLocation"
+                      },
+                      "profession": {
+                        "type": "string",
+                        "description": "profession"
+                      },
+                      "assistantName": {
+                        "type": "string",
+                        "description": "assistantName"
+                      },
+                      "manager": {
+                        "type": "string",
+                        "description": "manager"
+                      },
+                      "spouseName": {
+                        "type": "string",
+                        "description": "spouseName"
+                      },
+                      "personalNotes": {
+                        "type": "string",
+                        "description": "personalNotes"
+                      },
+                      "children": {
+                        "type": "array",
+                        "items": {},
+                        "description": "children"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "description": "gender"
+                      },
+                      "isFavorite": {
+                        "type": "string",
+                        "description": "isFavorite"
+                      },
+                      "emailAddresses": {
+                        "type": "array",
+                        "items": {},
+                        "description": "emailAddresses"
+                      },
+                      "websites": {
+                        "type": "array",
+                        "items": {},
+                        "description": "websites"
+                      },
+                      "phones": {
+                        "type": "array",
+                        "items": {},
+                        "description": "phones"
+                      },
+                      "postalAddresses": {
+                        "type": "array",
+                        "items": {},
+                        "description": "postalAddresses"
+                      },
+                      "flag": {
+                        "type": "object",
+                        "properties": {
+                          "flagStatus": {
+                            "type": "string",
+                            "description": "flagStatus"
+                          }
+                        },
+                        "description": "flag"
+                      }
+                    }
+                  },
+                  "description": "value"
+                }
+              }
+            }
+          }
+        },
+        "summary": "GetContacts",
+        "operationId": "GetContacts",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "folderid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/beta/users/{userId}/contactFolders/{folderId}/contacts/{contactId}": {
+      "delete": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "DeleteContact",
+        "operationId": "DeleteContact",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      },
+      "patch": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "UpdateContact",
+        "operationId": "UpdateContact",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categories": {
+                  "type": "array",
+                  "items": {},
+                  "description": "categories"
+                },
+                "parentFolderId": {
+                  "type": "string",
+                  "description": "parentFolderId"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "birthday"
+                },
+                "fileAs": {
+                  "type": "string",
+                  "description": "fileAs"
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "displayName"
+                },
+                "givenName": {
+                  "type": "string",
+                  "description": "givenName"
+                },
+                "initials": {
+                  "type": "string",
+                  "description": "initials"
+                },
+                "middleName": {
+                  "type": "string",
+                  "description": "middleName"
+                },
+                "nickName": {
+                  "type": "string",
+                  "description": "nickName"
+                },
+                "surname": {
+                  "type": "string",
+                  "description": "surname"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "title"
+                },
+                "yomiGivenName": {
+                  "type": "string",
+                  "description": "yomiGivenName"
+                },
+                "yomiSurname": {
+                  "type": "string",
+                  "description": "yomiSurname"
+                },
+                "yomiCompanyName": {
+                  "type": "string",
+                  "description": "yomiCompanyName"
+                },
+                "generation": {
+                  "type": "string",
+                  "description": "generation"
+                },
+                "emailAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "address": {
+                        "type": "string",
+                        "description": "address"
+                      }
+                    }
+                  },
+                  "description": "emailAddresses"
+                },
+                "imAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "imAddresses"
+                },
+                "jobTitle": {
+                  "type": "string",
+                  "description": "jobTitle"
+                },
+                "companyName": {
+                  "type": "string",
+                  "description": "companyName"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "department"
+                },
+                "officeLocation": {
+                  "type": "string",
+                  "description": "officeLocation"
+                },
+                "profession": {
+                  "type": "string",
+                  "description": "profession"
+                },
+                "businessHomePage": {
+                  "type": "string",
+                  "description": "businessHomePage"
+                },
+                "assistantName": {
+                  "type": "string",
+                  "description": "assistantName"
+                },
+                "manager": {
+                  "type": "string",
+                  "description": "manager"
+                },
+                "homePhones": {
+                  "type": "array",
+                  "items": {},
+                  "description": "homePhones"
+                },
+                "mobilePhone": {
+                  "type": "string",
+                  "description": "mobilePhone"
+                },
+                "businessPhones": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "businessPhones"
+                },
+                "homeAddress": {
+                  "type": "object",
+                  "properties": {
+                    "street": {
+                      "type": "string",
+                      "description": "street"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "city"
+                    },
+                    "state": {
+                      "type": "string",
+                      "description": "state"
+                    },
+                    "postalCode": {
+                      "type": "string",
+                      "description": "postalCode"
+                    }
+                  },
+                  "description": "homeAddress"
+                },
+                "businessAddress": {
+                  "type": "object",
+                  "properties": {
+                    "street": {
+                      "type": "string",
+                      "description": "street"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "city"
+                    },
+                    "state": {
+                      "type": "string",
+                      "description": "state"
+                    },
+                    "countryOrRegion": {
+                      "type": "string",
+                      "description": "countryOrRegion"
+                    },
+                    "postalCode": {
+                      "type": "string",
+                      "description": "postalCode"
+                    }
+                  },
+                  "description": "businessAddress"
+                },
+                "otherAddress": {
+                  "type": "object",
+                  "properties": {
+                    "street": {
+                      "type": "string",
+                      "description": "street"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "city"
+                    },
+                    "state": {
+                      "type": "string",
+                      "description": "state"
+                    },
+                    "countryOrRegion": {
+                      "type": "string",
+                      "description": "countryOrRegion"
+                    },
+                    "postalCode": {
+                      "type": "string",
+                      "description": "postalCode"
+                    }
+                  },
+                  "description": "otherAddress"
+                },
+                "spouseName": {
+                  "type": "string",
+                  "description": "spouseName"
+                },
+                "personalNotes": {
+                  "type": "string",
+                  "description": "personalNotes"
+                },
+                "children": {
+                  "type": "array",
+                  "items": {},
+                  "description": "children"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/v1.0/users/{userId}/contactFolders/{folderId}/contacts": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.context": {
+                  "type": "string",
+                  "description": "@odata.context"
+                },
+                "@odata.etag": {
+                  "type": "string",
+                  "description": "@odata.etag"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "id"
+                },
+                "createdDateTime": {
+                  "type": "string",
+                  "description": "createdDateTime"
+                },
+                "lastModifiedDateTime": {
+                  "type": "string",
+                  "description": "lastModifiedDateTime"
+                },
+                "changeKey": {
+                  "type": "string",
+                  "description": "changeKey"
+                },
+                "categories": {
+                  "type": "array",
+                  "items": {},
+                  "description": "categories"
+                },
+                "parentFolderId": {
+                  "type": "string",
+                  "description": "parentFolderId"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "birthday"
+                },
+                "fileAs": {
+                  "type": "string",
+                  "description": "fileAs"
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "displayName"
+                },
+                "givenName": {
+                  "type": "string",
+                  "description": "givenName"
+                },
+                "initials": {
+                  "type": "string",
+                  "description": "initials"
+                },
+                "middleName": {
+                  "type": "string",
+                  "description": "middleName"
+                },
+                "nickName": {
+                  "type": "string",
+                  "description": "nickName"
+                },
+                "surname": {
+                  "type": "string",
+                  "description": "surname"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "title"
+                },
+                "yomiGivenName": {
+                  "type": "string",
+                  "description": "yomiGivenName"
+                },
+                "yomiSurname": {
+                  "type": "string",
+                  "description": "yomiSurname"
+                },
+                "yomiCompanyName": {
+                  "type": "string",
+                  "description": "yomiCompanyName"
+                },
+                "generation": {
+                  "type": "string",
+                  "description": "generation"
+                },
+                "imAddresses": {
+                  "type": "array",
+                  "items": {},
+                  "description": "imAddresses"
+                },
+                "jobTitle": {
+                  "type": "string",
+                  "description": "jobTitle"
+                },
+                "companyName": {
+                  "type": "string",
+                  "description": "companyName"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "department"
+                },
+                "officeLocation": {
+                  "type": "string",
+                  "description": "officeLocation"
+                },
+                "profession": {
+                  "type": "string",
+                  "description": "profession"
+                },
+                "businessHomePage": {
+                  "type": "string",
+                  "description": "businessHomePage"
+                },
+                "assistantName": {
+                  "type": "string",
+                  "description": "assistantName"
+                },
+                "manager": {
+                  "type": "string",
+                  "description": "manager"
+                },
+                "homePhones": {
+                  "type": "array",
+                  "items": {},
+                  "description": "homePhones"
+                },
+                "mobilePhone": {
+                  "type": "string",
+                  "description": "mobilePhone"
+                },
+                "businessPhones": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "businessPhones"
+                },
+                "spouseName": {
+                  "type": "string",
+                  "description": "spouseName"
+                },
+                "personalNotes": {
+                  "type": "string",
+                  "description": "personalNotes"
+                },
+                "children": {
+                  "type": "array",
+                  "items": {},
+                  "description": "children"
+                },
+                "emailAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      },
+                      "address": {
+                        "type": "string",
+                        "description": "address"
+                      }
+                    }
+                  },
+                  "description": "emailAddresses"
+                },
+                "homeAddress": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "homeAddress"
+                },
+                "businessAddress": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "businessAddress"
+                },
+                "otherAddress": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "otherAddress"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create Contact",
+        "operationId": "CreateContact",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categories": {
+                  "type": "array",
+                  "items": {},
+                  "description": "categories"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "Birthday",
+                  "title": ""
+                },
+                "fileAs": {
+                  "type": "string",
+                  "description": "fileAs"
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "Display Name"
+                },
+                "givenName": {
+                  "type": "string",
+                  "description": "Given Name",
+                  "title": "Given Name"
+                },
+                "initials": {
+                  "type": "string",
+                  "description": "Initials"
+                },
+                "middleName": {
+                  "type": "string",
+                  "description": "Middle Name"
+                },
+                "nickName": {
+                  "type": "string",
+                  "description": "nickName"
+                },
+                "surname": {
+                  "type": "string",
+                  "description": "surname"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "title"
+                },
+                "yomiGivenName": {
+                  "type": "string",
+                  "description": "yomiGivenName"
+                },
+                "yomiSurname": {
+                  "type": "string",
+                  "description": "yomiSurname"
+                },
+                "yomiCompanyName": {
+                  "type": "string",
+                  "description": "yomiCompanyName"
+                },
+                "generation": {
+                  "type": "string",
+                  "description": "generation"
+                },
+                "imAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "imAddresses"
+                },
+                "jobTitle": {
+                  "type": "string",
+                  "description": "jobTitle"
+                },
+                "companyName": {
+                  "type": "string",
+                  "description": "companyName"
+                },
+                "department": {
+                  "type": "string",
+                  "description": "department"
+                },
+                "officeLocation": {
+                  "type": "string",
+                  "description": "officeLocation"
+                },
+                "profession": {
+                  "type": "string",
+                  "description": "profession"
+                },
+                "assistantName": {
+                  "type": "string",
+                  "description": "assistantName",
+                  "title": "Assistant Name"
+                },
+                "manager": {
+                  "type": "string",
+                  "description": "manager"
+                },
+                "spouseName": {
+                  "type": "string",
+                  "description": "spouseName"
+                },
+                "personalNotes": {
+                  "type": "string",
+                  "description": "personalNotes"
+                },
+                "children": {
+                  "type": "array",
+                  "items": {},
+                  "description": "children"
+                },
+                "gender": {
+                  "type": "string",
+                  "description": "gender"
+                },
+                "isFavorite": {
+                  "type": "string",
+                  "description": "isFavorite"
+                },
+                "emailAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string",
+                        "description": "address"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "name"
+                      }
+                    }
+                  },
+                  "description": "emailAddresses"
+                },
+                "websites": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "websites"
+                },
+                "phones": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "phones"
+                },
+                "homePhones": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "homePhones"
+                },
+                "mobilePhone": {
+                  "type": "string",
+                  "description": "mobilePhone"
+                },
+                "postalAddresses": {
+                  "type": "array",
+                  "items": {},
+                  "description": "postalAddresses"
+                },
+                "flag": {
+                  "type": "object",
+                  "properties": {
+                    "flagStatus": {
+                      "type": "string",
+                      "description": "flagStatus"
+                    }
+                  },
+                  "description": "flag"
+                }
+              },
+              "required": [
+                "givenName"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.windows.net/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {}
+    }
+  },
+  "security": [
+    {
+      "oauth2_auth": []
+    }
+  ],
+  "tags": []
+}
