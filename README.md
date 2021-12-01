@@ -9,5 +9,6 @@ Utilizes the Graph API to connect to Exchange contact folders. Allows you to acc
     - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/Exchange%20Online%20Contacts/apiDefinition.swagger.json)
 - [Mockaroo](https://www.mockaroo.com/)
     - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/Mockaroo/apiDefinition.swagger.json)
-- [Voice Monkey](https://voicemonkey.io/)
+- [Voice Monkey](https://voicemonkey.io/)  
+Allows you to launch an Alexa routine.
     - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/Voice%20Monkey/apiDefinition.swagger.json)
