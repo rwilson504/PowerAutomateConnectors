@@ -7,6 +7,9 @@ Contains the definitions for custom Power Automate connectors.
 - [Exchange Online Contacts](https://www.microsoft.com/en-us/microsoft-365/exchange/exchange-online)  
 Utilizes the Graph API to connect to Exchange contact folders. Allows you to access contact folders that you have delegation access to.  Also allows for create/update/delete of contacts.
     - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/Exchange%20Online%20Contacts/apiDefinition.swagger.json)
+- [icanhazdadjoke.com](https://icanhazdadjoke.com/)  
+icanhazdadjoke.com is the largest selection of dad jokes on the internet.
+    - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/icanhazdadjoke/apiDefinition.swagger.json)
 - [Mockaroo](https://www.mockaroo.com/)
     - [OpenAPI Link](https://raw.githubusercontent.com/rwilson504/PowerAutomateConnectors/main/Mockaroo/apiDefinition.swagger.json)
 - [Voice Monkey](https://voicemonkey.io/)  
