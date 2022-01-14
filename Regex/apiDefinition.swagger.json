@@ -1,0 +1,549 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Default title",
+    "description": "Allows you to utilize regular expression to search for pattens withing text.",
+    "version": "1.0"
+  },
+  "host": "microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/RegexIsMatch": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "textToCheck",
+                  "title": "Text to check"
+                },
+                "isMatch": {
+                  "type": "boolean",
+                  "description": "isMatch",
+                  "title": "Is match",
+                  "enum": [
+                    "",
+                    "true",
+                    "false"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Regex is match",
+        "operationId": "RegexIsMatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "The string to search for a match.",
+                  "title": "Text to check",
+                  "x-ms-visibility": "important"
+                },
+                "regex": {
+                  "type": "string",
+                  "description": "The regular expression.",
+                  "title": "Regular expression",
+                  "x-ms-visibility": "important"
+                },
+                "CultureInvariant": {
+                  "type": "boolean",
+                  "description": "Ignore cultural differences in language",
+                  "title": "Culture invariant",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ECMAScript": {
+                  "type": "boolean",
+                  "description": "Enable ECMAScript-compliant behavior for the expression.",
+                  "title": "ECMAScript",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ExplicitCapture": {
+                  "type": "boolean",
+                  "description": "Do not capture unnamed groups. The only valid captures are explicitly named or numbered groups of the form (?<name> subexpression). ",
+                  "title": "Explicit capture",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnoreCase": {
+                  "type": "boolean",
+                  "description": "Use case-insensitive matching.",
+                  "title": "Ignore case",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnorePatternWhitespace": {
+                  "type": "boolean",
+                  "description": "Exclude unescaped white space from the pattern, and enable comments after a number sign (#)",
+                  "title": "Ignore pattern whitespace",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Multiline": {
+                  "type": "boolean",
+                  "description": "Use multiline mode, where ^ and $ match the beginning and end of each line (instead of the beginning and end of the input string). ",
+                  "title": "Multiline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Right-to-Left": {
+                  "type": "boolean",
+                  "description": "Change the search direction. Search moves from right to left instead of from left to right.",
+                  "title": "Right-to-Left",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Singleline": {
+                  "type": "boolean",
+                  "description": "Use single-line mode, where the period (.) matches every character (instead of every character except \n).",
+                  "title": "Singleline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                }
+              },
+              "required": [
+                "textToCheck",
+                "regex"
+              ]
+            }
+          }
+        ],
+        "description": "Returns true or false if there is a match found"
+      }
+    },
+    "/GetRegexMatch": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "textToCheck",
+                  "title": "Text to check"
+                },
+                "match": {
+                  "type": "string",
+                  "description": "match",
+                  "title": "Match"
+                },
+                "position": {
+                  "type": "number",
+                  "description": "position",
+                  "title": "Position"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get regex match",
+        "operationId": "GetRegexMatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "The string to search for a match.",
+                  "title": "Text to check",
+                  "x-ms-visibility": "important"
+                },
+                "regex": {
+                  "type": "string",
+                  "description": "The regular expression.",
+                  "title": "Regular expression",
+                  "x-ms-visibility": "important"
+                },
+                "CultureInvariant": {
+                  "type": "boolean",
+                  "description": "Ignore cultural differences in language",
+                  "title": "Culture invariant",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ECMAScript": {
+                  "type": "boolean",
+                  "description": "Enable ECMAScript-compliant behavior for the expression.",
+                  "title": "ECMAScript",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ExplicitCapture": {
+                  "type": "boolean",
+                  "description": "Do not capture unnamed groups. The only valid captures are explicitly named or numbered groups of the form (?<name> subexpression). ",
+                  "title": "Explicit capture",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnoreCase": {
+                  "type": "boolean",
+                  "description": "Use case-insensitive matching.",
+                  "title": "Ignore case",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnorePatternWhitespace": {
+                  "type": "boolean",
+                  "description": "Exclude unescaped white space from the pattern, and enable comments after a number sign (#)",
+                  "title": "Ignore pattern whitespace",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Multiline": {
+                  "type": "boolean",
+                  "description": "Use multiline mode, where ^ and $ match the beginning and end of each line (instead of the beginning and end of the input string). ",
+                  "title": "Multiline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Right-to-Left": {
+                  "type": "boolean",
+                  "description": "Change the search direction. Search moves from right to left instead of from left to right.",
+                  "title": "Right-to-Left",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Singleline": {
+                  "type": "boolean",
+                  "description": "Use single-line mode, where the period (.) matches every character (instead of every character except \n).",
+                  "title": "Singleline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                }
+              },
+              "required": [
+                "textToCheck",
+                "regex"
+              ]
+            }
+          }
+        ],
+        "description": "Returns the first match found based upon the regular expression as well as the starting position within the text."
+      }
+    },
+    "/GetRegexMatches": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "textToCheck",
+                  "title": "Text to check"
+                },
+                "matchCount": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "matchCount",
+                  "title": "Match count"
+                },
+                "matches": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "description": "The matched value",
+                        "title": "Match value"
+                      },
+                      "position": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The first position in the string where the match occured within the string",
+                        "title": "Match position"
+                      },
+                      "groups": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "The group name",
+                              "title": "Group name"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "The value of the group",
+                              "title": "Group value"
+                            },
+                            "captures": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value of the capture",
+                                    "title": "Capture vame"
+                                  },
+                                  "position": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "description": "The first position in the string where the capture occured",
+                                    "title": "Capture position"
+                                  }
+                                }
+                              },
+                              "description": "captures",
+                              "title": "Captures"
+                            }
+                          }
+                        },
+                        "description": "groups",
+                        "title": "Groups"
+                      }
+                    }
+                  },
+                  "description": "matches",
+                  "title": "Matches"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get regex matches",
+        "operationId": "GetRegexMatches",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "textToCheck": {
+                  "type": "string",
+                  "description": "The string to search for a match.",
+                  "title": "Text to check",
+                  "x-ms-visibility": "important"
+                },
+                "regex": {
+                  "type": "string",
+                  "description": "The regular expression.",
+                  "title": "Regular expression",
+                  "x-ms-visibility": "important"
+                },
+                "CultureInvariant": {
+                  "type": "boolean",
+                  "description": "Ignore cultural differences in language",
+                  "title": "Culture invariant",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ECMAScript": {
+                  "type": "boolean",
+                  "description": "Enable ECMAScript-compliant behavior for the expression.",
+                  "title": "ECMAScript",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "ExplicitCapture": {
+                  "type": "boolean",
+                  "description": "Do not capture unnamed groups. The only valid captures are explicitly named or numbered groups of the form (?<name> subexpression). ",
+                  "title": "Explicit capture",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnoreCase": {
+                  "type": "boolean",
+                  "description": "Use case-insensitive matching.",
+                  "title": "Ignore case",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "IgnorePatternWhitespace": {
+                  "type": "boolean",
+                  "description": "Exclude unescaped white space from the pattern, and enable comments after a number sign (#)",
+                  "title": "Ignore pattern whitespace",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Multiline": {
+                  "type": "boolean",
+                  "description": "Use multiline mode, where ^ and $ match the beginning and end of each line (instead of the beginning and end of the input string). ",
+                  "title": "Multiline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Right-to-Left": {
+                  "type": "boolean",
+                  "description": "Change the search direction. Search moves from right to left instead of from left to right.",
+                  "title": "Right-to-Left",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                },
+                "Singleline": {
+                  "type": "boolean",
+                  "description": "Use single-line mode, where the period (.) matches every character (instead of every character except \n).",
+                  "title": "Singleline",
+                  "x-ms-visibility": "advanced",
+                  "format": "null",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                }
+              },
+              "required": [
+                "textToCheck",
+                "regex"
+              ]
+            }
+          }
+        ],
+        "description": "Returns all matches, groups and captures found with the text."
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
