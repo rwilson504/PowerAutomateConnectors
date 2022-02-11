@@ -1,0 +1,597 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ContosoInvoicing",
+    "version": "1.0",
+    "description": "contosoinvoicingtest.azurewebsites.net"
+  },
+  "host": "contosoinvoicing.azurewebsites.net",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/AddInvoice": {
+      "post": {
+        "tags": [
+          "AddInvoice"
+        ],
+        "summary": "Add Invoice ",
+        "description": "Add Invoice ",
+        "operationId": "AddInvoice",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "typeId",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Invoice"
+            }
+          }
+        }
+      }
+    },
+    "/GetInvoice": {
+      "get": {
+        "tags": [
+          "GetInvoice"
+        ],
+        "summary": "Get Invoice",
+        "description": "Get a specific invoice by id",
+        "operationId": "GetInvoice",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/GetInvoiceSchema": {
+      "get": {
+        "tags": [
+          "GetInvoiceSchema"
+        ],
+        "summary": "Get Invoice Schema",
+        "description": "Get Invoice Schema",
+        "operationId": "GetInvoiceSchema",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "typeId",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/ListInvoices": {
+      "get": {
+        "tags": [
+          "ListInvoices"
+        ],
+        "summary": "List Invoices",
+        "description": "List Invoices",
+        "operationId": "ListInvoices",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fromDate",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "toDate",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "fromAmount",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "name": "toAmount",
+            "type": "number",
+            "format": "double"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InvoiceList"
+            }
+          }
+        }
+      }
+    },
+    "/ListInvoiceTypes": {
+      "get": {
+        "tags": [
+          "ListInvoiceTypes"
+        ],
+        "summary": "List Invoice Types",
+        "description": "List Invoice Types",
+        "operationId": "ListInvoiceTypes",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/InvoiceTypesList"
+            }
+          }
+        }
+      }
+    },
+    "/NewInvoiceNotification": {
+      "x-ms-notification-content": {
+        "description": "Invoice",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "invoiceId": {
+              "type": "string",
+              "description": "invoiceId"
+            },
+            "date": {
+              "type": "string",
+              "description": "date"
+            },
+            "amount": {
+              "type": "integer",
+              "format": "int32",
+              "description": "amount"
+            },
+            "accountId": {
+              "type": "string",
+              "description": "accountId",
+              "title": "Account Id"
+            },
+            "accountName": {
+              "type": "string",
+              "description": "accountName"
+            },
+            "status": {
+              "type": "string",
+              "description": "status"
+            },
+            "typeId": {
+              "type": "integer",
+              "format": "int32",
+              "description": "typeId"
+            },
+            "purchaseOrderId": {
+              "type": "string",
+              "description": "purchaseOrderId"
+            },
+            "tags": {
+              "type": "string",
+              "description": "tags"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NewInvoiceNotification"
+        ],
+        "summary": "List Webhooks",
+        "description": "List Webhooks",
+        "operationId": "ListWebhooks",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "targetUrl": {
+                  "type": "string",
+                  "description": "targetUrl",
+                  "title": "Target Url",
+                  "x-ms-visibility": "internal",
+                  "x-ms-notification-url": true
+                }
+              },
+              "required": [
+                "targetUrl"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NewInvoiceNotification"
+        ],
+        "summary": "remove a webhook",
+        "description": "remove a webhook",
+        "operationId": "NewInvoiceRemove",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "targetUrl": {
+                  "type": "string",
+                  "description": "targetUrl",
+                  "title": "Target Url",
+                  "x-ms-visibility": "internal",
+                  "x-ms-notification-url": true
+                }
+              },
+              "required": [
+                "targetUrl"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "When Invoice is Created",
+        "description": "When Invoice is Created",
+        "operationId": "InvoiceCreated",
+        "x-ms-trigger": "single",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "targetUrl": {
+                  "type": "string",
+                  "description": "targetUrl",
+                  "title": "Target Url",
+                  "x-ms-visibility": "internal",
+                  "x-ms-notification-url": true
+                }
+              },
+              "required": [
+                "targetUrl"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/PayInvoice": {
+      "post": {
+        "tags": [
+          "PayInvoice"
+        ],
+        "summary": "Pay a specific invoice by id",
+        "description": "",
+        "operationId": "PayInvoice",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "amount",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/PaymentReceipt"
+            }
+          }
+        }
+      }
+    },
+    "/trigger/ListInvoices": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "invoices": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "invoiceId": {
+                        "type": "string",
+                        "description": "invoiceId"
+                      },
+                      "date": {
+                        "type": "string",
+                        "description": "date"
+                      },
+                      "createDate": {
+                        "type": "string",
+                        "description": "createDate"
+                      },
+                      "amount": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "amount"
+                      },
+                      "accountId": {
+                        "type": "string",
+                        "description": "accountId"
+                      },
+                      "accountName": {
+                        "type": "string",
+                        "description": "accountName"
+                      },
+                      "status": {
+                        "type": "string",
+                        "description": "status"
+                      },
+                      "typeId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "typeId"
+                      },
+                      "purchaseOrderId": {
+                        "type": "string",
+                        "description": "purchaseOrderId"
+                      },
+                      "tags": {
+                        "type": "string",
+                        "description": "tags"
+                      }
+                    }
+                  },
+                  "description": "invoices"
+                }
+              }
+            }
+          }
+        },
+        "summary": "When Invoice is Created (Poll)",
+        "description": "When Invoice is Created (Poll)",
+        "operationId": "InvoiceCreatedPoll",
+        "x-ms-trigger": "batch",
+        "x-ms-trigger-metadata": {
+          "mode": "polling",
+          "kind": "query"
+        },
+        "parameters": [
+          {
+            "name": "fromDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "x-ms-visibility": "internal"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "purchaseOrderId": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice"
+        }
+      }
+    },
+    "InvoiceList": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Invoice"
+          }
+        }
+      }
+    },
+    "InvoiceType": {
+      "type": "object",
+      "properties": {
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "InvoiceTypesList": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceType"
+          }
+        }
+      }
+    },
+    "NewInvoiceNotificationRequest": {
+      "type": "object",
+      "properties": {
+        "targeturl": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentReceipt": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string"
+        },
+        "transactionId": {
+          "type": "string"
+        },
+        "balance": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "API Key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-KEY"
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ],
+  "tags": []
+}
