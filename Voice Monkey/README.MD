@@ -1,16 +1,16 @@
-### NOTE
-> This is a *sample* connector.  The connector is provided here with the intent to illustrate certain features and functionality around connectors.
+# Voice Monkey
+Voice Monkey allows you to trigger Alexa routines externally and send custom Text To Speech (TTS) commands to your devices for announcements.
 
-## Voice Monkey - Microsoft Power Automate Connector
-Microsoft Power Automate Connector for [https://voicemonkey.io/](https://voicemonkey.io/) which allows you trigger Alexa routines using a URL.
+## Publisher: Richard Wilson
 
 ## Prerequisites
-You will need to create a new account on Voice Monkey and obtain your Access token and Secret token from the Dashboard page after complete.
+You will need to create a new account on Voice Monkey and obtain your Access token and Secret token from the Dashboard page.
 
-## Triggers
+## Supported Operations
+### Trigger a voice monkey: Trigger a voice monkey routine to run an Alexa routine remotely.
 
-* none
+## API Documentation
+https://voicemonkey.io/docs
 
-## Actions
-
-* Trigger a voice monkey: Trigger a voice monkey routine to run an Alexa routine remotely.
+## Known Issues and Limitations
+None.
