@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Azure IP Ranges-Service Tags",
-    "description": "",
+    "description": "This connector provides custom actions to retrieve and process Azure IP ranges and service tag information, including generating IP rules and reducing CIDR blocks.",
     "version": "1.0",
     "contact": {
       "name": "Richard Wilson",
