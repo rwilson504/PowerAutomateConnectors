@@ -1,9 +1,0 @@
-{
-  "connectorId": "shared_graph-20contact-20connector-5f8be6277d0cb4c718--9982026cc4446f97",
-  "environment": "3865a7ce-2047-4d33-aa01-17dcb3d36093",
-  "apiProperties": "apiProperties.json",
-  "apiDefinition": "apiDefinition.swagger.json",
-  "icon": "icon.png",
-  "powerAppsUrl": "https://api.powerapps.com",
-  "powerAppsApiVersion": "2016-11-01"
-}

@@ -1,9 +1,0 @@
-{
-  "connectorId": "shared_voice-20monkey-5f363df9dd2e653c29-5fbc63d518851e6998",
-  "environment": "b27e5aa5-4d1f-4efd-8ee8-bbba35bf54ce",
-  "apiProperties": "apiProperties.json",
-  "apiDefinition": "apiDefinition.swagger.json",
-  "icon": "icon.png",
-  "powerAppsUrl": "https://api.powerapps.com",
-  "powerAppsApiVersion": "2016-11-01"
-}
