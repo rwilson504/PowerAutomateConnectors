@@ -3,7 +3,12 @@
   "info": {
     "title": "Azure IP Ranges-Service Tags",
     "description": "",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "Richard Wilson",
+      "url": "https://www.richardawilson.com",
+      "email": "richard.a.wilson@microsoft.com"
+    }
   },
   "host": "www.microsoft.com",
   "basePath": "/",
@@ -16,6 +21,7 @@
     "/en-us/download/details.aspx": {
       "get": {
         "summary": "Get direct download URL",
+        "description": "Retrieves the direct download URL based on the provided ID parameter.",
         "operationId": "GetDirectDownloadUrl",
         "parameters": [
           {
@@ -52,6 +58,7 @@
     "/en-us/download/servicetags.aspx": {
       "get": {
         "summary": "Get service tags",
+        "description": "Retrieves the service tags from the downloaded file content.",
         "operationId": "GetServiceTags",
         "parameters": [
           {
@@ -83,6 +90,7 @@
     "/en-us/download/allfilecontents.aspx": {
       "get": {
         "summary": "Get all file contents",
+        "description": "Retrieves all file contents available at the specified download URL.",
         "operationId": "GetAllFileContents",
         "parameters": [
           {
@@ -114,6 +122,7 @@
     "/en-us/download/ipaddresses.aspx": {
       "get": {
         "summary": "Get IP addresses by service tag",
+        "description": "Extracts and returns the IP addresses for a specified service tag and IP version filter from the downloaded file.",
         "operationId": "GetIPAddressesByServiceTag",
         "parameters": [
           {
@@ -175,6 +184,7 @@
     "/en-us/download/cidrreducer.aspx": {
       "post": {
         "summary": "Reduce CIDR values",
+        "description": "Reduces the provided list of CIDR values based on the maximum prefix constraint and returns the distinct reduced list along with counts.",
         "operationId": "CIDRReducer",
         "parameters": [
           {
@@ -232,6 +242,7 @@
     "/en-us/download/iprules.aspx": {
       "post": {
         "summary": "Generate IP rules",
+        "description": "Generates IP rules by pairing each provided IP address or CIDR with the specified action (Allow or Deny).",
         "operationId": "GenerateIPRules",
         "parameters": [
           {
