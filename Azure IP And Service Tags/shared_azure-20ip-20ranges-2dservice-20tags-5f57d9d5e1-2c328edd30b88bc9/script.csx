@@ -255,18 +255,23 @@ public class Script : ScriptBase
         return "Unknown";
     }
     
-    // New function: ReduceCIDRs - adjusts each CIDR if its prefix > maxPrefix and returns distinct list.
+    // Updated ReduceCIDRs: Remove CIDRs with prefix > maxPrefix, then eliminate those contained within another.
     private string[] ReduceCIDRs(string[] cidrValues, int maxPrefix)
     {
-        var adjustedList = new List<string>();
-        // Adjust each CIDR using existing AdjustCIDR logic.
+        var filteredList = new List<string>();
+        // Filter out any CIDR with a prefix greater than maxPrefix.
         foreach(var cidr in cidrValues)
         {
-            string adjusted = AdjustCIDR(cidr.Trim(), maxPrefix);
-            adjustedList.Add(adjusted);
+            var parts = cidr.Trim().Split('/');
+            if(parts.Length != 2) continue;
+            if(!int.TryParse(parts[1], out int prefix)) continue;
+            if(prefix > maxPrefix)
+                continue; // Skip this CIDR.
+            filteredList.Add(cidr.Trim());
         }
+        
         // Remove duplicates.
-        var distinctCidrs = adjustedList.Distinct().ToList();
+        var distinctCidrs = filteredList.Distinct().ToList();
         
         // Filter out CIDRs that are contained within another.
         var result = new List<string>();
@@ -276,7 +281,6 @@ public class Script : ScriptBase
             for (int j = 0; j < distinctCidrs.Count; j++)
             {
                 if (i == j) continue;
-                // If cidr i is contained in cidr j, mark it.
                 if (IsContainedIn(distinctCidrs[i], distinctCidrs[j]))
                 {
                     isContained = true;
@@ -316,38 +320,5 @@ public class Script : ScriptBase
         uint mask = prefixB == 0 ? 0u : 0xFFFFFFFF << (32 - prefixB);
         // If A's network equals B's network, then A is contained in B.
         return (ipUintA & mask) == (ipUintB & mask);
-    }
-
-    // New function: AdjustCIDR - for IPv4, if the CIDR's prefix is greater than maxPrefix, adjust it, else return unchanged.
-    private string AdjustCIDR(string cidr, int maxPrefix)
-    {
-        var parts = cidr.Split('/');
-        if(parts.Length != 2)
-            return cidr;
-        if(!int.TryParse(parts[1], out int prefix))
-            return cidr;
-        // Only adjust if IPv4 and prefix is larger than maxPrefix.
-        if(prefix <= maxPrefix)
-            return cidr;
-        if(System.Net.IPAddress.TryParse(parts[0], out var ip))
-        {
-            if(ip.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
-                return cidr; // for non-IPv4, no adjustment
-            var ipBytes = ip.GetAddressBytes();
-            // Convert bytes to uint in big-endian order.
-            uint ipUint = ((uint)ipBytes[0] << 24) | ((uint)ipBytes[1] << 16) | ((uint)ipBytes[2] << 8) | ipBytes[3];
-            // Compute new mask: (32 - maxPrefix) zeros.
-            uint mask = maxPrefix == 0 ? 0u : 0xFFFFFFFF << (32 - maxPrefix);
-            uint network = ipUint & mask;
-            var networkBytes = new byte[] {
-                (byte)((network >> 24) & 0xFF),
-                (byte)((network >> 16) & 0xFF),
-                (byte)((network >> 8) & 0xFF),
-                (byte)(network & 0xFF)
-            };
-            var networkIp = new System.Net.IPAddress(networkBytes);
-            return networkIp.ToString() + "/" + maxPrefix;
-        }
-        return cidr;
-    }
+    }    
 }
