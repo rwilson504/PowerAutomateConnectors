@@ -5,6 +5,9 @@ public class Script : ScriptBase
 {
     public override async Task<HttpResponseMessage> ExecuteAsync()
     {
+        var _logger = this.Context.Logger;
+        _logger.LogInformation($"Operation ID: {this.Context.OperationId}");
+        
         switch (this.Context.OperationId)
         {
             case "GetDirectDownloadUrl":
