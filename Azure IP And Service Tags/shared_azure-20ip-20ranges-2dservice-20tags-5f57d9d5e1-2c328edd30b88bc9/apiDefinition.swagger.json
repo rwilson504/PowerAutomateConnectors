@@ -15,6 +15,7 @@
   "paths": {
     "/en-us/download/details.aspx": {
       "get": {
+        "summary": "Get direct download URL",
         "responses": {
           "default": {
             "description": "default",
@@ -29,7 +30,6 @@
             }
           }
         },
-        "summary": "Get Direct Download Url",
         "operationId": "GetDirectDownloadUrl",
         "parameters": [
           {
@@ -49,7 +49,7 @@
     },
     "/en-us/download/servicetags.aspx": {
       "get": {
-        "summary": "Get Service Tags",
+        "summary": "Get service tags",
         "operationId": "GetServiceTags",
         "parameters": [
           {
@@ -78,7 +78,7 @@
     },
     "/en-us/download/allfilecontents.aspx": {
       "get": {
-        "summary": "Get All File Contents",
+        "summary": "Get all file contents",
         "operationId": "GetAllFileContents",
         "parameters": [
           {
@@ -107,7 +107,7 @@
     },
     "/en-us/download/ipaddresses.aspx": {
       "get": {
-        "summary": "Get IP Addresses by Service Tag",
+        "summary": "Get IP addresses by service tag",
         "operationId": "GetIPAddressesByServiceTag",
         "parameters": [
           {
@@ -163,7 +163,7 @@
     },
     "/en-us/download/cidrreducer.aspx": {
       "post": {
-        "summary": "CIDR Reducer",
+        "summary": "Reduce CIDR values",
         "operationId": "CIDRReducer",
         "parameters": [
           {
@@ -215,7 +215,7 @@
     },
     "/en-us/download/iprules.aspx": {
       "post": {
-        "summary": "Generate IP Rules",
+        "summary": "Generate IP rules",
         "operationId": "GenerateIPRules",
         "parameters": [
           {
