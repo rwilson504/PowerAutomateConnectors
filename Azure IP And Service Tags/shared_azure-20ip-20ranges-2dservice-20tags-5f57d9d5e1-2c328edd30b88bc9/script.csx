@@ -258,13 +258,64 @@ public class Script : ScriptBase
     // New function: ReduceCIDRs - adjusts each CIDR if its prefix > maxPrefix and returns distinct list.
     private string[] ReduceCIDRs(string[] cidrValues, int maxPrefix)
     {
-        var result = new List<string>();
+        var adjustedList = new List<string>();
+        // Adjust each CIDR using existing AdjustCIDR logic.
         foreach(var cidr in cidrValues)
         {
             string adjusted = AdjustCIDR(cidr.Trim(), maxPrefix);
-            result.Add(adjusted);
+            adjustedList.Add(adjusted);
         }
-        return result.Distinct().ToArray();
+        // Remove duplicates.
+        var distinctCidrs = adjustedList.Distinct().ToList();
+        
+        // Filter out CIDRs that are contained within another.
+        var result = new List<string>();
+        for (int i = 0; i < distinctCidrs.Count; i++)
+        {
+            bool isContained = false;
+            for (int j = 0; j < distinctCidrs.Count; j++)
+            {
+                if (i == j) continue;
+                // If cidr i is contained in cidr j, mark it.
+                if (IsContainedIn(distinctCidrs[i], distinctCidrs[j]))
+                {
+                    isContained = true;
+                    break;
+                }
+            }
+            if (!isContained)
+            {
+                result.Add(distinctCidrs[i]);
+            }
+        }
+        return result.ToArray();
+    }
+
+    // New helper function to check if cidrA is contained in cidrB (IPv4 only)
+    private bool IsContainedIn(string cidrA, string cidrB)
+    {
+        // Split CIDRs and ensure valid format
+        var partsA = cidrA.Split('/');
+        var partsB = cidrB.Split('/');
+        if (partsA.Length != 2 || partsB.Length != 2) return false;
+        if (!int.TryParse(partsA[1], out int prefixA) || !int.TryParse(partsB[1], out int prefixB))
+            return false;
+        // Only consider containment if B represents a larger network
+        if(prefixB >= prefixA)
+            return false;
+        if(!System.Net.IPAddress.TryParse(partsA[0], out System.Net.IPAddress ipA) ||
+           !System.Net.IPAddress.TryParse(partsB[0], out System.Net.IPAddress ipB))
+             return false;
+        
+        // Convert to UInt32 (big-endian) - works for IPv4 only
+        uint ipUintA = ((uint)ipA.GetAddressBytes()[0] << 24) | ((uint)ipA.GetAddressBytes()[1] << 16) |
+                       ((uint)ipA.GetAddressBytes()[2] << 8)  | ipA.GetAddressBytes()[3];
+        uint ipUintB = ((uint)ipB.GetAddressBytes()[0] << 24) | ((uint)ipB.GetAddressBytes()[1] << 16) |
+                       ((uint)ipB.GetAddressBytes()[2] << 8)  | ipB.GetAddressBytes()[3];
+        // Generate mask for B
+        uint mask = prefixB == 0 ? 0u : 0xFFFFFFFF << (32 - prefixB);
+        // If A's network equals B's network, then A is contained in B.
+        return (ipUintA & mask) == (ipUintB & mask);
     }
 
     // New function: AdjustCIDR - for IPv4, if the CIDR's prefix is greater than maxPrefix, adjust it, else return unchanged.
