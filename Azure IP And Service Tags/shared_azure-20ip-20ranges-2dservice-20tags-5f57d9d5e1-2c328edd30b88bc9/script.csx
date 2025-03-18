@@ -5,42 +5,25 @@ public class Script : ScriptBase
 {
     public override async Task<HttpResponseMessage> ExecuteAsync()
     {
-        // Check if the operation ID is GetDirectDownloadUrl
-        if (this.Context.OperationId == "GetDirectDownloadUrl")
+        switch (this.Context.OperationId)
         {
-            return await this.HandleGetDirectDownloadUrl().ConfigureAwait(false);
+            case "GetDirectDownloadUrl":
+                return await this.HandleGetDirectDownloadUrl().ConfigureAwait(false);
+            case "GetServiceTags":
+                return await this.HandleGetServiceTags().ConfigureAwait(false);
+            case "GetAllFileContents":
+                return await this.HandleGetAllFileContents().ConfigureAwait(false);
+            case "GetIPAddressesByServiceTag":
+                return await this.HandleGetIPAddressesByServiceTag().ConfigureAwait(false);
+            case "CIDRReducer":
+                return await this.HandleCIDRReducer().ConfigureAwait(false);
+            case "GenerateIPRules":
+                return await this.HandleGenerateIPRules().ConfigureAwait(false);
+            default:
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                response.Content = CreateJsonContent($"Unknown operation ID '{this.Context.OperationId}'");
+                return response;
         }
-        
-        // Check if the operation ID is GetServiceTags
-        if (this.Context.OperationId == "GetServiceTags")
-        {
-            return await this.HandleGetServiceTags().ConfigureAwait(false);
-        }
-        
-        if (this.Context.OperationId == "GetAllFileContents")  // new branch
-        {
-            return await this.HandleGetAllFileContents().ConfigureAwait(false);
-        }
-        
-        if (this.Context.OperationId == "GetIPAddressesByServiceTag")
-        {
-            return await this.HandleGetIPAddressesByServiceTag().ConfigureAwait(false);
-        }
-        
-        if (this.Context.OperationId == "CIDRReducer")
-        {
-            return await this.HandleCIDRReducer().ConfigureAwait(false);
-        }
-        
-        if (this.Context.OperationId == "GenerateIPRules")
-        {
-            return await this.HandleGenerateIPRules().ConfigureAwait(false);
-        }
-        
-        // Handle an invalid operation ID
-        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest);
-        response.Content = CreateJsonContent($"Unknown operation ID '{this.Context.OperationId}'");
-        return response;
     }
     
     // New function for GetDirectDownloadUrl action
