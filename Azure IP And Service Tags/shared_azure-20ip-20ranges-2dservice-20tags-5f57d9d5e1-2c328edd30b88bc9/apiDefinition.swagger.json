@@ -306,5 +306,20 @@
   "responses": {},
   "securityDefinitions": {},
   "security": [],
-  "tags": []
+  "tags": [],
+  "x-ms-connector-metadata": [
+    {
+      "propertyName": "Website",
+      "propertyValue": "https://developer.va.gov"
+    },
+    {
+      "propertyName": "Privacy policy",
+      "propertyValue": "https://www.va.gov/privacy/"
+    },
+    {
+      "propertyName": "Categories",
+      "propertyValue": "Data"
+    }
+  ],
+  "x-components": {}
 }

@@ -1,10 +1,11 @@
 {
   "properties": {
     "connectionParameters": {},
-    "iconBrandColor": "#007ee5",
+    "iconBrandColor": "#da3b01",
     "scriptOperations": [],
     "capabilities": [],
     "policyTemplateInstances": [],
-    "publisher": "Rick Wilson"
+    "publisher": "Rick Wilson",
+    "stackOwner": "Microsoft"
   }
 }
