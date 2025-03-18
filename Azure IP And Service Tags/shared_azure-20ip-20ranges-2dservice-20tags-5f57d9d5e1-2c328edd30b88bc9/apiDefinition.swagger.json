@@ -27,7 +27,7 @@
           {
             "name": "id",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "enum": [
               "Public Cloud",
@@ -64,7 +64,7 @@
           {
             "name": "downloadUrl",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "Parameter downloadUrl",
             "x-ms-summary": "Download URL"
@@ -96,7 +96,7 @@
           {
             "name": "downloadUrl",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "Parameter downloadUrl",
             "x-ms-summary": "Download URL"
@@ -120,31 +120,23 @@
       }
     },
     "/en-us/download/ipaddresses.aspx": {
-      "get": {
-        "summary": "Get IP addresses by service tag",
-        "description": "Extracts and returns the IP addresses for a specified service tag and IP version filter from the downloaded file.",
+      "post": {
+        "summary": "Get IP addresses by service tag(s)",
+        "description": "Extracts and returns the IP addresses for the specified service tags and IP version filter from the downloaded file. The service tags are provided in the request body as an array.",
         "operationId": "GetIPAddressesByServiceTag",
         "parameters": [
           {
             "name": "downloadUrl",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "URL to download the file content",
             "x-ms-summary": "Download URL"
           },
           {
-            "name": "serviceTag",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "description": "The service tag name",
-            "x-ms-summary": "Service Tag"
-          },
-          {
             "name": "ipVersion",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "enum": [
               "All",
@@ -154,6 +146,19 @@
             "default": "IPv4",
             "description": "IP Version filter. Allowed values: All, IPv4, IPv6. Default is IPv4.",
             "x-ms-summary": "IP Version"
+          },
+          {
+            "name": "serviceTags",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Array of service tag names to filter by",
+            "x-ms-summary": "Service Tags"
           }
         ],
         "responses": {
@@ -167,12 +172,12 @@
                   "items": {
                     "type": "string"
                   },
-                  "description": "List of IP addresses for the specified service tag",
+                  "description": "List of IP addresses for the specified service tags",
                   "x-ms-summary": "IP Addresses"
                 },
                 "count": {
                   "type": "integer",
-                  "description": "Count of IP addresses for the specified service tag",
+                  "description": "Count of IP addresses for the specified service tags",
                   "x-ms-summary": "Count"
                 }
               }
@@ -261,7 +266,7 @@
           {
             "name": "action",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string",
             "enum": [
               "Allow",

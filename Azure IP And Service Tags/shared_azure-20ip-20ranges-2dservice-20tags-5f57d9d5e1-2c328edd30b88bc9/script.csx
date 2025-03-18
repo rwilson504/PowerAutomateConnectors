@@ -87,35 +87,43 @@ public class Script : ScriptBase
         return response;
     }
     
-    // New function for GetIPAddressesByServiceTag action
+    // Updated GetIPAddressesByServiceTag action to accept multiple service tags from the body.
     private async Task<HttpResponseMessage> HandleGetIPAddressesByServiceTag()
     {
-        // Update query string and extract parameters
-        var locationUriBuilder = new UriBuilder(this.Context.Request.RequestUri);
+        var _logger = this.Context.Logger;
+        // Extract remaining query parameters.
         var query = System.Web.HttpUtility.ParseQueryString(this.Context.Request.RequestUri.Query);
         string downloadUrl = query["downloadUrl"];
-        string serviceTag = query["serviceTag"];
         string ipVersion = query["ipVersion"];
         if (string.IsNullOrEmpty(ipVersion))
         {
             ipVersion = "IPv4";
         }
         
-        // Set the request URI to the downloadUrl
-        this.Context.Request.RequestUri = new Uri(downloadUrl);
+        // Read the request body to get the array of service tags.
+        string bodyContent = await this.Context.Request.Content.ReadAsStringAsync().ConfigureAwait(false);
+        // Updated conversion: first parse to JArray then convert to string array.
+        _logger.LogInformation($"Body content: {bodyContent}");
+        JArray jsonArray = JArray.Parse(bodyContent);
+        var serviceTags = jsonArray.ToObject<string[]>();
         
-        // Send the request to get the file content
+        // Set the request URI to the downloadUrl.
+        this.Context.Request.RequestUri = new Uri(downloadUrl);
+        this.Context.Request.Method = HttpMethod.Get;        
+
+        // Send the request to get the file content.
         HttpResponseMessage serviceResponse = await this.Context.SendAsync(this.Context.Request, this.CancellationToken).ConfigureAwait(false);
         string content = await serviceResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
         
-        // Parse the JSON content to extract IP addresses for the specified service tag
+        // Parse the JSON content to extract IP addresses for any of the specified service tags.
         var jObject = JObject.Parse(content);
         var values = jObject["values"];
         var ipList = new List<string>();
         
         foreach (var token in values)
         {
-            if (token["name"]?.ToString() == serviceTag)
+            string tagName = token["name"]?.ToString();
+            if (serviceTags != null && serviceTags.Contains(tagName))
             {
                 var addressPrefixes = token["properties"]["addressPrefixes"] as JArray;
                 if (addressPrefixes != null)
@@ -134,7 +142,6 @@ public class Script : ScriptBase
         }
         
         var ipArray = new JArray(ipList);
-        // Create output JSON with both ipAddresses and ipCount
         var result = new JObject(
             new JProperty("ipAddresses", ipArray),
             new JProperty("ipCount", ipList.Count)
