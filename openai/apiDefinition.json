@@ -1,0 +1,232 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure OpenAI - Commercial",
+    "description": "This connector will call out to an Azure OpenAI service that exists in Azure Commercial",
+    "version": "1.0"
+  },
+  "host": "yourserver.openai.azure.com",
+  "basePath": "/openai/deployments/yourdeployment/extensions/chat/completions",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "id"
+                },
+                "model": {
+                  "type": "string",
+                  "description": "model"
+                },
+                "created": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "created"
+                },
+                "object": {
+                  "type": "string",
+                  "description": "object"
+                },
+                "choices": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "index"
+                      },
+                      "finish_reason": {
+                        "type": "string",
+                        "description": "finish_reason"
+                      },
+                      "message": {
+                        "type": "object",
+                        "properties": {
+                          "role": {
+                            "type": "string",
+                            "description": "role"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "content"
+                          },
+                          "end_turn": {
+                            "type": "boolean",
+                            "description": "end_turn"
+                          },
+                          "context": {
+                            "type": "object",
+                            "properties": {
+                              "messages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "role": {
+                                      "type": "string",
+                                      "description": "role"
+                                    },
+                                    "content": {
+                                      "type": "string",
+                                      "description": "content"
+                                    },
+                                    "end_turn": {
+                                      "type": "boolean",
+                                      "description": "end_turn"
+                                    }
+                                  }
+                                },
+                                "description": "messages"
+                              }
+                            },
+                            "description": "context"
+                          }
+                        },
+                        "description": "message"
+                      }
+                    }
+                  },
+                  "description": "choices"
+                },
+                "usage": {
+                  "type": "object",
+                  "properties": {
+                    "prompt_tokens": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "prompt_tokens"
+                    },
+                    "completion_tokens": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "completion_tokens"
+                    },
+                    "total_tokens": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "total_tokens"
+                    }
+                  },
+                  "description": "usage"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2023-10-01-preview",
+            "x-ms-summary": "API Version"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "messages": {
+                  "x-ms-summary": "Messages",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "role": {
+                        "type": "string",
+                        "description": "Type of role (i.e. user or system)",
+                        "x-ms-summary": "Role",
+                        "enum": [
+                          "user",
+                          "system",
+                          "assistant"
+                        ]
+                      },
+                      "content": {
+                        "type": "string",
+                        "description": "The content of your role prompt",
+                        "x-ms-summary": "Content"
+                      }
+                    }
+                  },
+                  "description": "messages"
+                },
+                "dataSources": {
+                  "x-ms-summary": "Data Sources",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "x-ms-summary": "Type",
+                        "description": "The type of data source (i.e. AzureCognitiveSearch)"
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "properties": {
+                          "endpoint": {
+                            "x-ms-summary": "Endpoint",
+                            "type": "string",
+                            "description": "The endpoint of the data source"
+                          },
+                          "key": {
+                            "type": "string",
+                            "x-ms-summary": "Key",
+                            "description": "The key for the data source"
+                          },
+                          "indexName": {
+                            "x-ms-summary": "Index Name",
+                            "type": "string",
+                            "description": "The name of the index used by the data source"
+                          }
+                        },
+                        "description": "parameters"
+                      }
+                    }
+                  },
+                  "description": "dataSources"
+                }
+              }
+            }
+          }
+        ],
+        "summary": "Call Azure OpenAI Completions",
+        "description": "OpenAI connection to Azure",
+        "operationId": "Call_OpenAI"
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "API Key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "api-key"
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ],
+  "tags": []
+}

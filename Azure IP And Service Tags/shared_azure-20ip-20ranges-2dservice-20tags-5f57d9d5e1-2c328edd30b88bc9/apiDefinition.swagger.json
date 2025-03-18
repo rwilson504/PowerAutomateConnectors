@@ -1,0 +1,276 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Azure IP Ranges-Service Tags",
+    "description": "",
+    "version": "1.0"
+  },
+  "host": "www.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/en-us/download/details.aspx": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "downloadUrl": {
+                  "type": "string",
+                  "description": "downloadUrl"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Direct Download Url",
+        "operationId": "GetDirectDownloadUrl",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Public Cloud",
+              "US Government",
+              "China Cloud"
+            ],
+            "description": "Select one of the following options: Public Cloud, US Government, China Cloud"
+          }
+        ]
+      }
+    },
+    "/en-us/download/servicetags.aspx": {
+      "get": {
+        "summary": "Get Service Tags",
+        "operationId": "GetServiceTags",
+        "parameters": [
+          {
+            "name": "downloadUrl",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Parameter downloadUrl"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "downloadUrl": {
+                  "type": "string",
+                  "description": "downloadUrl"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/en-us/download/allfilecontents.aspx": {
+      "get": {
+        "summary": "Get All File Contents",
+        "operationId": "GetAllFileContents",
+        "parameters": [
+          {
+            "name": "downloadUrl",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Parameter downloadUrl"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "downloadUrl": {
+                  "type": "string",
+                  "description": "downloadUrl"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/en-us/download/ipaddresses.aspx": {
+      "get": {
+        "summary": "Get IP Addresses by Service Tag",
+        "operationId": "GetIPAddressesByServiceTag",
+        "parameters": [
+          {
+            "name": "downloadUrl",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "URL to download the file content"
+          },
+          {
+            "name": "serviceTag",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The service tag name"
+          },
+          {
+            "name": "ipVersion",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "All",
+              "IPv4",
+              "IPv6"
+            ],
+            "default": "IPv4",
+            "description": "IP Version filter. Allowed values: All, IPv4, IPv6. Default is IPv4."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ipAddresses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "List of IP addresses for the specified service tag"
+                },
+                "count": {
+                  "type": "integer",
+                  "description": "Count of IP addresses for the specified service tag"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/en-us/download/cidrreducer.aspx": {
+      "post": {
+        "summary": "CIDR Reducer",
+        "operationId": "CIDRReducer",
+        "parameters": [
+          {
+            "name": "cidrValues",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Comma separated list of CIDR values"
+          },
+          {
+            "name": "maxPrefix",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "Maximum allowed prefix length"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reducedValues": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Reduced distinct list of CIDR values"
+                },
+                "originalCount": {
+                  "type": "integer",
+                  "description": "Original count of CIDR values"
+                },
+                "reducedCount": {
+                  "type": "integer",
+                  "description": "Reduced count of CIDR values"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/en-us/download/iprules.aspx": {
+      "post": {
+        "summary": "Generate IP Rules",
+        "operationId": "GenerateIPRules",
+        "parameters": [
+          {
+            "name": "ipList",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Array of IP addresses or CIDR values"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Allow", "Deny"],
+            "default": "Allow",
+            "description": "Indicates whether to Allow or Deny the IP addresses."
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "description": "The IP address or CIDR value"
+                  },
+                  "action": {
+                    "type": "string",
+                    "description": "The rule action (Allow or Deny)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}

@@ -1,0 +1,60 @@
+{
+  "properties": {
+    "connectionParameters": {
+      "api_key": {
+        "type": "securestring",
+        "uiDefinition": {
+          "displayName": "API Key",
+          "description": "The API key for the Azure OpenAI API",
+          "tooltip": "Provide your api-key",
+          "constraints": {
+            "tabIndex": 2,
+            "clearText": false,
+            "required": "true"
+          }
+        }
+      },
+      "host": {
+        "type": "string",
+        "uiDefinition": {
+          "displayName": "HOST",
+          "description": "The hostname of your Azure OpenAI service",
+          "tooltip": "Provide your hostname",
+          "constraints": {
+            "tabIndex": 3,
+            "required": "true"
+          }
+        }
+      },
+      "deployment": {
+        "type": "string",
+        "uiDefinition": {
+          "displayName": "Deployment name",
+          "description": "The name of your Azure OpenAI deployment",
+          "tooltip": "Provide your deployment name",
+          "constraints": {
+            "tabIndex": 4,
+            "required": "true"
+          }
+        }
+      }
+    },
+    "iconBrandColor": "#007ee5",
+    "capabilities": [],
+    "scriptOperations": [],
+    "publisher": "",
+    "stackOwner": "",
+    "policyTemplateInstances": [
+      {
+        "TemplateId": "dynamichosturl",
+        "Title": "Set host URL",
+        "Parameters": {
+          "x-ms-apimTemplateParameter.urlTemplate": "https://@connectionParameters(\u0027host\u0027)/openai/deployments/@connectionParameters(\u0027deployment\u0027)/extensions/chat/completions",
+          "x-ms-apimTemplate-operationName": [
+            "Call_OpenAI"
+          ]
+        }
+      }
+    ]
+  }
+}
