@@ -16,20 +16,6 @@
     "/en-us/download/details.aspx": {
       "get": {
         "summary": "Get direct download URL",
-        "responses": {
-          "default": {
-            "description": "default",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "downloadUrl": {
-                  "type": "string",
-                  "description": "downloadUrl"
-                }
-              }
-            }
-          }
-        },
         "operationId": "GetDirectDownloadUrl",
         "parameters": [
           {
@@ -42,9 +28,25 @@
               "US Government",
               "China Cloud"
             ],
-            "description": "Select one of the following options: Public Cloud, US Government, China Cloud"
+            "description": "Select one of the following options: Public Cloud, US Government, China Cloud",
+            "x-ms-summary": "ID"
           }
-        ]
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "downloadUrl": {
+                  "type": "string",
+                  "description": "downloadUrl",
+                  "x-ms-summary": "Download URL"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/en-us/download/servicetags.aspx": {
@@ -57,7 +59,8 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Parameter downloadUrl"
+            "description": "Parameter downloadUrl",
+            "x-ms-summary": "Download URL"
           }
         ],
         "responses": {
@@ -68,7 +71,8 @@
               "properties": {
                 "downloadUrl": {
                   "type": "string",
-                  "description": "downloadUrl"
+                  "description": "downloadUrl",
+                  "x-ms-summary": "Download URL"
                 }
               }
             }
@@ -86,7 +90,8 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "Parameter downloadUrl"
+            "description": "Parameter downloadUrl",
+            "x-ms-summary": "Download URL"
           }
         ],
         "responses": {
@@ -97,7 +102,8 @@
               "properties": {
                 "downloadUrl": {
                   "type": "string",
-                  "description": "downloadUrl"
+                  "description": "downloadUrl",
+                  "x-ms-summary": "Download URL"
                 }
               }
             }
@@ -115,14 +121,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "URL to download the file content"
+            "description": "URL to download the file content",
+            "x-ms-summary": "Download URL"
           },
           {
             "name": "serviceTag",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "The service tag name"
+            "description": "The service tag name",
+            "x-ms-summary": "Service Tag"
           },
           {
             "name": "ipVersion",
@@ -135,7 +143,8 @@
               "IPv6"
             ],
             "default": "IPv4",
-            "description": "IP Version filter. Allowed values: All, IPv4, IPv6. Default is IPv4."
+            "description": "IP Version filter. Allowed values: All, IPv4, IPv6. Default is IPv4.",
+            "x-ms-summary": "IP Version"
           }
         ],
         "responses": {
@@ -149,11 +158,13 @@
                   "items": {
                     "type": "string"
                   },
-                  "description": "List of IP addresses for the specified service tag"
+                  "description": "List of IP addresses for the specified service tag",
+                  "x-ms-summary": "IP Addresses"
                 },
                 "count": {
                   "type": "integer",
-                  "description": "Count of IP addresses for the specified service tag"
+                  "description": "Count of IP addresses for the specified service tag",
+                  "x-ms-summary": "Count"
                 }
               }
             }
@@ -176,14 +187,16 @@
                 "type": "string"
               }
             },
-            "description": "Comma separated list of CIDR values"
+            "description": "Comma separated list of CIDR values",
+            "x-ms-summary": "CIDR Values"
           },
           {
             "name": "maxPrefix",
             "in": "query",
             "required": false,
             "type": "integer",
-            "description": "Maximum allowed prefix length"
+            "description": "Maximum allowed prefix length",
+            "x-ms-summary": "Max Prefix"
           }
         ],
         "responses": {
@@ -197,15 +210,18 @@
                   "items": {
                     "type": "string"
                   },
-                  "description": "Reduced distinct list of CIDR values"
+                  "description": "Reduced distinct list of CIDR values",
+                  "x-ms-summary": "Reduced Values"
                 },
                 "originalCount": {
                   "type": "integer",
-                  "description": "Original count of CIDR values"
+                  "description": "Original count of CIDR values",
+                  "x-ms-summary": "Original Count"
                 },
                 "reducedCount": {
                   "type": "integer",
-                  "description": "Reduced count of CIDR values"
+                  "description": "Reduced count of CIDR values",
+                  "x-ms-summary": "Reduced Count"
                 }
               }
             }
@@ -228,16 +244,21 @@
                 "type": "string"
               }
             },
-            "description": "Array of IP addresses or CIDR values"
+            "description": "Array of IP addresses or CIDR values",
+            "x-ms-summary": "IP List"
           },
           {
             "name": "action",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": ["Allow", "Deny"],
+            "enum": [
+              "Allow",
+              "Deny"
+            ],
             "default": "Allow",
-            "description": "Indicates whether to Allow or Deny the IP addresses."
+            "description": "Indicates whether to Allow or Deny the IP addresses.",
+            "x-ms-summary": "Action"
           }
         ],
         "consumes": [
@@ -253,11 +274,13 @@
                 "properties": {
                   "value": {
                     "type": "string",
-                    "description": "The IP address or CIDR value"
+                    "description": "The IP address or CIDR value",
+                    "x-ms-summary": "Value"
                   },
                   "action": {
                     "type": "string",
-                    "description": "The rule action (Allow or Deny)"
+                    "description": "The rule action (Allow or Deny)",
+                    "x-ms-summary": "Action"
                   }
                 }
               }
