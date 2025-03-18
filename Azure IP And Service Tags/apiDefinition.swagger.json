@@ -315,11 +315,11 @@
   "x-ms-connector-metadata": [
     {
       "propertyName": "Website",
-      "propertyValue": "https://developer.va.gov"
+      "propertyValue": "https://www.micorosft.com"
     },
     {
       "propertyName": "Privacy policy",
-      "propertyValue": "https://www.va.gov/privacy/"
+      "propertyValue": "https://www.microsoft.com/en-us/privacy/privacystatement"
     },
     {
       "propertyName": "Categories",
