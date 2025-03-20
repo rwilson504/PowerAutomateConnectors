@@ -1,0 +1,93 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Converstion Tools",
+    "description": "This provides conversion tools for string manipulation, including HTML to text conversion.",
+    "version": "1.0",
+    "contact": {
+      "name": "Richard Wilson",
+      "url": "https://www.richardawilson.com",
+      "email": "richard.a.wilson@microsoft.com"
+    }
+  },
+  "host": "www.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/convertHtmlToText": {
+      "post": {
+        "summary": "Convert HTML to text",
+        "description": "Converts an HTML body to plain text.",
+        "operationId": "convertHtmlToText",
+        "parameters": [
+          {
+            "name": "htmlBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "html",
+              "default": "<html><body><h1>Hello, World!</h1></body></html>"
+            }
+          },
+          {
+            "name": "preserveLineBreaks",
+            "in": "query",
+            "type": "boolean",
+            "default": false,
+            "required": false,
+            "description": "Determines whether line breaks in the HTML should be converted to newlines in plain text."
+          },
+          {
+            "name": "preserveWhitespace",
+            "in": "query",
+            "type": "boolean",
+            "default": false,
+            "required": false,
+            "description": "Keeps extra spaces and indentation (useful for preformatted text)."
+          },
+          {
+            "name": "removeExtraSpaces",
+            "in": "query",
+            "type": "boolean",
+            "default": true,
+            "required": false,
+            "description": "Trims multiple spaces into a single space to ensure cleaner text."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful conversion",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "x-ms-connector-metadata": [
+    {
+      "propertyName": "Website",
+      "propertyValue": "https://www.contoso.com"
+    },
+    {
+      "propertyName": "Privacy policy",
+      "propertyValue": "https://www.contoso.com"
+    },
+    {
+      "propertyName": "Categories",
+      "propertyValue": "Data"
+    }
+  ],
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
